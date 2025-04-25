@@ -14,6 +14,23 @@
 // run once the page is loaded and ready
 $ ( () => {
 
+    // animate the h1 heading
+    $("section > h1").css ({
+        fontSize: 0,
+        opacity: 0
+    }).animate({
+        fontSize: "2.3em",
+        opacity: 1
+    }, 600);
+
+    // Reveal the questions when the page opens
+    $("dl#faq")
+    .hide()
+    .effect("clip", {
+        mode: "show",
+        direction: "horizontal"
+    }, 600);
+
     // Add cllick events to each question in the FAQ
     $("dl#faq dt").click( e => {
 
@@ -24,9 +41,9 @@ $ ( () => {
         $(question).toggleClass("hiddenAnswer");
 
         if ($(question).hasClass("hiddenAnswer")) {
-            $(answer).hide();
+            $(answer).slideUp(600);
         } else {
-            $(answer).show();
+            $(answer).slideDown(600);
         }
     });
 
